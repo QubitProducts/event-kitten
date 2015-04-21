@@ -1,6 +1,8 @@
 Event Kitten
 ------------
 
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+
 An event emitter inspired by [event-kit](https://github.com/atom/event-kit), written in JavaScript. Meow.
 
 ### Motivation
