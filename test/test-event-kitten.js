@@ -44,6 +44,19 @@ describe('emitter', function () {
     expect(handlerA.callCount).to.be(1)
     expect(handlerB.callCount).to.be(2)
   })
+  it('should pass emitted data to the handler', function () {
+    var dataA = {}
+    var dataB = {}
+    var handlerA = sinon.stub()
+    var handlerB = sinon.stub()
+    emitter.on('foo', handlerA)
+    emitter.on('bar', handlerB)
+
+    emitter.emit('foo', dataA)
+    emitter.emit('bar', dataB)
+    expect(handlerA.withArgs(dataA).callCount).to.be(1)
+    expect(handlerB.withArgs(dataB).callCount).to.be(1)
+  })
   it('should not throw errors if dispose is called twice', function () {
     var subscription = emitter.on('foo', sinon.stub())
     subscription.dispose()

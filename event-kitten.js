@@ -25,8 +25,8 @@ function createEmitter () {
     }
   }
 
-  function emit (eventName) {
-    callEach(handlersByName[eventName] || [])
+  function emit (eventName, eventData) {
+    callEach(handlersByName[eventName] || [], eventData)
   }
 
   function filter (list, test) {
@@ -39,9 +39,9 @@ function createEmitter () {
     return output
   }
 
-  function callEach (fnList) {
+  function callEach (fnList, data) {
     each(fnList, function (fn) {
-      fn()
+      fn(data)
     })
   }
 
