@@ -1,6 +1,6 @@
 {
   "name": "event-kitten",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An event emitter inspired by event-kit, written in JavaScript",
   "main": "event-kitten.js",
   "scripts": {
