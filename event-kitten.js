@@ -5,7 +5,8 @@ function createEmitter () {
 
   return {
     on: on,
-    emit: emit
+    emit: emit,
+    off: off
   }
 
   function on (eventName, handler) {
@@ -27,6 +28,10 @@ function createEmitter () {
 
   function emit (eventName, eventData) {
     callEach(handlersByName[eventName] || [], eventData)
+  }
+
+  function off () {
+    handlersByName = {}
   }
 
   function filter (list, test) {

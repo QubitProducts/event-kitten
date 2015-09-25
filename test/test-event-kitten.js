@@ -62,4 +62,20 @@ describe('emitter', function () {
     subscription.dispose()
     expect(subscription.dispose).to.not.throwException()
   })
+  it('should not invoke any observers when the off method is called', function () {
+    var handlerA = sinon.stub()
+    var handlerB = sinon.stub()
+    emitter.on('foo', handlerA)
+    emitter.on('foo', handlerB)
+
+    emitter.off()
+    emitter.emit('foo')
+    expect(handlerA.callCount).to.be(0)
+    expect(handlerB.callCount).to.be(0)
+
+    emitter.on('foo', handlerA)
+    emitter.emit('foo')
+    expect(handlerA.callCount).to.be(1)
+
+  })
 })
